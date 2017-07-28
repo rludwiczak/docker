@@ -1,11 +1,11 @@
-# OctoPrint-docker [![Build Status](https://travis-ci.org/OctoPrint/docker.svg?branch=master)](https://travis-ci.org/OctoPrint/docker)
+# OctoPrint-docker-pi
 
-This repository contains everything you need to run [Octoprint](https://github.com/foosel/OctoPrint) in a docker environment.
+This repository contains everything you need to run [Octoprint](https://github.com/foosel/OctoPrint) in a docker environment on ARM/Pi device like Raspberry Pi or Orange Pi.
 
 # Getting started
 
 ```
-git clone https://github.com/OctoPrint/docker.git octoprint-docker && cd octoprint-docker
+git clone https://github.com/rludwiczak/octoprint-docker-pi octoprint-docker && cd octoprint-docker
 
 # search for you 3D printer serial port (usually it's /dev/ttyUSB0 or /dev/ttyACM0)
 ls /dev | grep tty
@@ -19,11 +19,6 @@ docker-compose up -d
 You can then go to http://localhost:5000
 
 You can display the log using `docker-compose logs -f`
-
-## Without docker-compose
-```
-docker run -d -v --device /dev/ttyACM0:/dev/ttyACM0 -p 5000:5000 --name octoprint octoprint/octoprint
-```
 
 # Additional tools
 
