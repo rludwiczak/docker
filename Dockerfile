@@ -1,20 +1,23 @@
+FROM resin/rpi-raspbian
 
-FROM python:2.7
+MAINTAINER "Rafał Ludwiczak"
+
+RUN apt-get update && \
+    apt-get -y upgrade && \
+    apt-get -y install python python-pip wget git --no-install-recommends && \
+    apt-get -qy clean all && \
+    pip install --upgrade pip && \
+		pip install virtualenv
+
+RUN apt-get -y install build-essential
+
 EXPOSE 5000
-LABEL maintainer "gaetancollaud@gmail.com"
-
 ENV CURA_VERSION=15.04.6
 ARG tag=master
 
 VOLUME /user/octoprint/.octoprint
 
 WORKDIR /opt/octoprint
-
-# In case of alpine
-#RUN apk update && apk upgrade \
-#    && apk add --no-cache bash git openssh gcc\
-#		&& pip install virtualenv \
-#		&& rm -rf /var/cache/apk/*
 
 #install ffmpeg
 RUN cd /tmp \
