@@ -4,12 +4,10 @@ MAINTAINER "Rafał Ludwiczak"
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get -y install python python-pip wget git --no-install-recommends && \
-    apt-get -qy clean all && \
+    apt-get -y install build-essential python python-pip wget git --no-install-recommends && \
+    apt-get -y clean all && \
     pip install --upgrade pip && \
 		pip install virtualenv
-
-RUN apt-get -y install build-essential
 
 EXPOSE 5000
 ENV CURA_VERSION=15.04.6
